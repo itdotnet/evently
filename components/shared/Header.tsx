@@ -1,5 +1,7 @@
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs"
 import Image from "next/image"
 import Link from "next/link"
+import { Button } from "../ui/button"
 
 const Header = () => {
     return (
@@ -9,7 +11,16 @@ const Header = () => {
                     <Image src="/assets/images/logo.svg" alt="Evently logo" width={128} height={38} />
                 </Link>
 
-                <div className="flex justify-end gap-3 w-32"></div>
+                <div className="flex justify-end gap-3 w-32">
+                    <SignedIn>
+                        <UserButton afterSignOutUrl="/"/>
+                    </SignedIn>
+                    <SignedOut>
+                        <Button asChild className="rounded-full" size="lg">
+                            <Link href="/sign-in">Login</Link>
+                        </Button>
+                    </SignedOut>
+                </div>
             </div>
         </header>
     )
