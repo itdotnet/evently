@@ -66,22 +66,17 @@ export async function POST(req: Request) {
             lastName: last_name!,
             photo: image_url,
         }
-        try {
-            const newUser = await createUser(user);
+        const newUser = await createUser(user);
 
-            // if (newUser) {
-            //     await clerkClient.users.updateUserMetadata(id, {
-            //         publicMetadata: {
-            //             userId: newUser._id
-            //         }
-            //     })
-            // }
+        if (newUser) {
+            await clerkClient.users.updateUserMetadata(id, {
+                publicMetadata: {
+                    userId: newUser._id
+                }
+            })
+        }
 
-            return NextResponse.json({ message: 'OK', user: newUser })
-        }
-        catch (error) {
-            return NextResponse.json({ message: 'nOK', res: error })
-        }
+        return NextResponse.json({ message: 'OK', user: newUser })
     }
 
     if (eventType === 'user.updated') {
