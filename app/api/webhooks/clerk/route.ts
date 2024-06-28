@@ -79,8 +79,8 @@ export async function POST(req: Request) {
 
             return NextResponse.json({ message: 'OK', user: newUser })
         }
-        catch (err) {
-            return NextResponse.json({ message: 'nOK', error: err })
+        catch (error) {
+            return NextResponse.json({ message: 'nOK', error: JSON.stringify(error) })
         }
     }
 
