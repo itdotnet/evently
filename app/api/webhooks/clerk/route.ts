@@ -69,18 +69,18 @@ export async function POST(req: Request) {
         try {
             const newUser = await createUser(user);
 
-            if (newUser) {
-                await clerkClient.users.updateUserMetadata(id, {
-                    publicMetadata: {
-                        userId: newUser._id
-                    }
-                })
-            }
+            // if (newUser) {
+            //     await clerkClient.users.updateUserMetadata(id, {
+            //         publicMetadata: {
+            //             userId: newUser._id
+            //         }
+            //     })
+            // }
 
             return NextResponse.json({ message: 'OK', user: newUser })
         }
         catch (error) {
-            return NextResponse.json({ message: 'nOK', error: JSON.stringify(error) })
+            return NextResponse.json({ message: 'nOK', res: error })
         }
     }
 
