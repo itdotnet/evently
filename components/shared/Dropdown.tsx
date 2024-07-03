@@ -20,7 +20,6 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Input } from "../ui/input"
 import { createCategory, getAllCategories } from "@/lib/actions/category.action"
-import { createUser, getAllUsers, getUserById } from "@/lib/actions/user.actions"
 
 
 type DropDownProps = {
@@ -48,23 +47,7 @@ const Dropdown = ({ value, onChangeHandler }: DropDownProps) => {
             categoryList && setCategories(categoryList as ICategory[])
         }
 
-        //getCategories();
-
-
-        const getUser = async () => {
-            const data = {
-                clerkId: 'fsdfsjyghjgjg',
-                firstName: 'fsdf',
-                lastName: 'dfsfsf',
-                userName: 'gdfgd',
-                email: 'ggdfgd',
-                photo: 'sfsfs'
-            }
-            const users = await createUser(data);
-            console.log(users);
-        }
-
-        getUser();
+        getCategories();
     }, [])
 
     return (
