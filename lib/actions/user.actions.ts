@@ -21,6 +21,19 @@ export async function createUser(user: CreateUserParams) {
     }
 }
 
+export const getAllUsers = async () => {
+    try {
+
+        await connectToDatabase();
+
+        const users = await User.find();
+
+        return JSON.parse(JSON.stringify(users));
+    } catch (error) {
+        handleError(error)
+    }
+}
+
 export async function getUserById(userId: string) {
     try {
         await connectToDatabase()
