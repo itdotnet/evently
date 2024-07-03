@@ -55,7 +55,7 @@ const Dropdown = ({ value, onChangeHandler }: DropDownProps) => {
             const data = {
                 clerkId: 'user_29w83sxmDNGwOuEthce5gg56FcC',
                 firstName: 'Example',
-                lastName: 'Example',
+                lastName: null,
                 userName: 'example@example.org',
                 email: 'example@example.org',
                 photo: 'https://img.clerk.com/xxxxxx'
