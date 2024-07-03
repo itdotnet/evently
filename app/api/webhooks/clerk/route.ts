@@ -60,11 +60,11 @@ export async function POST(req: Request) {
 
         const user = {
             clerkId: id,
-            email: email_addresses[0].email_address,
+            email: email_addresses[0].email_address?email_addresses[0].email_address:'it@gmail.com',
             userName: username?username:email_addresses[0].email_address,
             firstName: first_name?first_name:'omm',
             lastName: last_name?last_name:'abbb',
-            photo: image_url,
+            photo: image_url?image_url:'fsfswfsf',
         }
         const newUser = await createUser(user);
 
