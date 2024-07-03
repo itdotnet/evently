@@ -19,8 +19,7 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Input } from "../ui/input"
-import { createCategory, getAllCategories } from "@/lib/actions/category.action"
-import { createUser, getAllUsers, getUserById } from "@/lib/actions/user.actions"
+import { createCategory, getAllCategories } from "@/lib/actions/category.actions"
 
 
 type DropDownProps = {
@@ -48,23 +47,7 @@ const Dropdown = ({ value, onChangeHandler }: DropDownProps) => {
             categoryList && setCategories(categoryList as ICategory[])
         }
 
-        //getCategories();
-
-
-        const getUser = async () => {
-            const data = {
-                clerkId: 'user_29w83sxmDNGwOuEthce5gg56FcC',
-                firstName: 'Example',
-                lastName: null,
-                userName: 'example@example.org',
-                email: 'example@example.org',
-                photo: 'https://img.clerk.com/xxxxxx'
-            }
-            const users = await createUser(data);
-            console.log(users);
-        }
-
-        getUser();
+        getCategories();
     }, [])
 
     return (
