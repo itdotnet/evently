@@ -45,7 +45,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
         </div>
 
         <Collection data={events?.data} emptyTitle="No Events Found" emptyStateSubtext="Come back later"
-          collectionType="All_Events" limit={6} page={1} totalPages={2} />
+          collectionType="All_Events" limit={6} page={page} totalPages={events?.totalPages} />
       </section>
     </>
   );
