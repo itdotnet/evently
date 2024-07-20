@@ -1,20 +1,26 @@
 import EventForm from '@/components/shared/EventForm'
 import { getEventById } from '@/lib/actions/event.actions';
 import { auth } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation';
 import React from 'react'
 
-type UpdateEventProps={
-    params:{
-        id:string
+type UpdateEventProps = {
+    params: {
+        id: string
     }
 }
 
-const UpdateEvent = async({params:{id}}:UpdateEventProps) => {
-    const event=await getEventById(id);
+const UpdateEvent = async ({ params: { id } }: UpdateEventProps) => {
+    const event = await getEventById(id);
 
-    const {sessionClaims}=auth();
+    const { sessionClaims } = auth();
 
-    const userId=sessionClaims?.userId as string;
+    const userId = sessionClaims?.userId as string;
+
+    if (userId != event.organizer._id) {
+        redirect('/');
+        return;
+    }
 
     return (
         <>
@@ -24,7 +30,7 @@ const UpdateEvent = async({params:{id}}:UpdateEventProps) => {
             </section>
 
             <div className='wrapper my-8'>
-                <EventForm userId={userId} type="Update" event={event} eventId={event._id}/>
+                <EventForm userId={userId} type="Update" event={event} eventId={event._id} />
             </div>
         </>
     )
